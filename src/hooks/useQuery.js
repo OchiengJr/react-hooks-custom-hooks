@@ -1,25 +1,35 @@
 import { useEffect, useState } from "react";
 
-// take in the url
+/**
+ * Custom hook to fetch data from the provided URL.
+ * @param {string} url - The URL from which to fetch data.
+ * @returns {{ data: any, isLoaded: boolean, error: string }} - Object containing fetched data, loading state, and error message.
+ */
 function useQuery(url) {
   const [isLoaded, setIsLoaded] = useState(false);
-  // rename `posts` to a more generic `data`
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    setIsLoaded(false);
-    fetch(url)
-      .then((r) => r.json())
-      .then((data) => {
-        setData(data);
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch data from ${url}`);
+        }
+        const jsonData = await response.json();
+        setData(jsonData);
         setIsLoaded(true);
-      });
-  }, [url]);
-  // the url is now a dependency
-  // we want to use the side effect whenever the url changes
+      } catch (error) {
+        setError(error.message || "Failed to fetch data");
+        setIsLoaded(true);
+      }
+    };
 
-  // return an *object* with the data and isLoaded state
-  return { data, isLoaded };
+    fetchData();
+  }, [url]);
+
+  return { data, isLoaded, error };
 }
 
 export default useQuery;

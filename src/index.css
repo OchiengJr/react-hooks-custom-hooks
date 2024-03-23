@@ -1,8 +1,8 @@
 :root {
-  --bg: #282c34;
-  --header: #fff;
-  --link: #61dafb;
-  --text: hsla(0, 0%, 100%, 0.88);
+  --bg-color: #282c34;
+  --header-color: #fff;
+  --link-color: #61dafb;
+  --text-color: hsla(0, 0%, 100%, 0.88);
 }
 
 body {
@@ -10,33 +10,34 @@ body {
   font-family: "Merriweather", "Georgia", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: var(--bg);
-  color: var(--text);
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
-h1,
-h3 {
+h1, h3 {
   font-size: 2em;
   font-family: Montserrat, sans-serif;
   font-weight: 900;
 }
 
 a {
-  color: var(--text);
+  color: var(--text-color);
   text-decoration: none;
 }
 
+/* Main App Container */
 .App {
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   padding: 2.5rem 1rem;
   max-width: 700px;
 }
 
+/* Header Styles */
 header h1 {
   font-size: 3em;
 }
 
+/* Sidebar Styles */
 aside {
   display: flex;
   margin-bottom: 3rem;
@@ -50,6 +51,7 @@ aside img {
   background-color: black;
 }
 
+/* Article Styles */
 article {
   margin-bottom: 3rem;
 }
@@ -58,8 +60,7 @@ article p {
   margin-top: 0.25rem;
 }
 
-article a,
-article h3 {
-  color: var(--link);
-  margin-bottom: 0rem;
+article a, article h3 {
+  color: var(--link-color);
+  margin-bottom: 0;
 }

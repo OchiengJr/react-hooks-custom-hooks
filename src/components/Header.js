@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Header() {
+const Header = () => {
   return (
     <header>
       <h1>
-        <Link to="/">Underreacted</Link>
+        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+          Underreacted
+        </Link>
       </h1>
     </header>
   );

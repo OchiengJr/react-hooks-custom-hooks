@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Header from "./Header";
 import HomePage from "./HomePage";
 import ArticlePage from "./ArticlePage";
+import NotFoundPage from "./NotFoundPage"; // Import the NotFoundPage component
 
 function App() {
   return (
@@ -12,8 +13,11 @@ function App() {
         <Route path="/articles/:id">
           <ArticlePage />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <HomePage />
+        </Route>
+        <Route>
+          <NotFoundPage /> {/* Render NotFoundPage for all other routes */}
         </Route>
       </Switch>
     </div>
